@@ -1,3 +1,5 @@
+import Navbar from "@/components/navbar/navbar";
+import Sidebar from "@/components/sidebar/sidebar";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -11,11 +13,19 @@ export default function Layout({
 }>) {
   return (
     <ResizablePanelGroup direction="horizontal">
-      <ResizablePanel className="min-h-screen" minSize={10}>
-        One
+      <ResizablePanel
+        defaultSize={10}
+        maxSize={15}
+        minSize={5}
+        className="min-h-screen"
+      >
+        <Sidebar />
       </ResizablePanel>
       <ResizableHandle withHandle />
-      <ResizablePanel>Two</ResizablePanel>
+      <ResizablePanel>
+        <Navbar />
+        {children}
+      </ResizablePanel>
     </ResizablePanelGroup>
   );
 }
